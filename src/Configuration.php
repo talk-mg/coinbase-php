@@ -55,7 +55,6 @@ class Configuration
         $this->authentication = $authentication;
         $this->apiUrl = self::DEFAULT_API_URL;
         $this->apiVersion = self::DEFAULT_API_VERSION;
-        $this->caBundle = __DIR__.'/../etc/ca-coinbase.crt';
     }
 
     /** @return HttpClient */
@@ -68,7 +67,6 @@ class Configuration
             $transport ?: new GuzzleClient()
         );
 
-        $httpClient->setCaBundle($this->caBundle);
         $httpClient->setLogger($this->logger);
 
         return $httpClient;
